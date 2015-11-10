@@ -19,16 +19,16 @@
          "type": "dir",
          "contents": [
             {
-               "name": "pic.jpg",
+               "name": "itsme@2010.jpg",
                "type": "img",
-               "contents": "/images/penguin.png",
-               "caption": "What a beautiful penguin."
+               "contents": "/images/me.png",
+               "caption": "Me in Shanxi University, 2010."
             },
             {
-               "name": "pic2.jpg",
+               "name": "v-for-vendetta.jpg",
                "type": "img",
-               "contents": "/images/penguin.png",
-               "caption": "What a beautiful penguin."
+               "contents": "/images/v.png",
+               "caption": "People shouldn't be afraid of their government."
             }
          ],
          "description": "Some photos you will like."
