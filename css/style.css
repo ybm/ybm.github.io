@@ -28,6 +28,10 @@ body {
    text-decoration: underline;
 }
 
+.jsterm img {
+   padding-top: 5px;
+}
+
 div.jsterm {
    background: black;
    font-family: monospace;

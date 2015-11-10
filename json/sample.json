@@ -21,14 +21,8 @@
             {
                "name": "itsme@2010.jpg",
                "type": "img",
-               "contents": "/images/me.png",
+               "contents": "/images/itsme@2010.jpg",
                "caption": "Me in Shanxi University, 2010."
-            },
-            {
-               "name": "v-for-vendetta.jpg",
-               "type": "img",
-               "contents": "/images/v.png",
-               "caption": "People shouldn't be afraid of their government."
             }
          ],
          "description": "Some photos you will like."
