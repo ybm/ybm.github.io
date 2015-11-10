@@ -1,0 +1,43 @@
+{
+   "name": "~",
+   "type": "dir",
+   "contents": [
+      {
+         "name": "README",
+         "type": "text",
+         "contents": "My name is Yanbin MA. I am a Software Engineer at Beijing. This is my website.\n\nIf you need help, type \"help\".\n\nYou can contact me at ma.yanbin@qq.com.",
+         "description": "Read me to know me."
+      },
+      {
+         "name": "blog",
+         "type": "exec",
+         "contents": "http://yianbin.github.io/",
+         "description": "My blog host on GitHub."
+      },
+      {
+         "name": "images",
+         "type": "dir",
+         "contents": [
+            {
+               "name": "pic.jpg",
+               "type": "img",
+               "contents": "/images/penguin.png",
+               "caption": "What a beautiful penguin."
+            },
+            {
+               "name": "pic2.jpg",
+               "type": "img",
+               "contents": "/images/penguin.png",
+               "caption": "What a beautiful penguin."
+            }
+         ],
+         "description": "Some photos you will like."
+      },
+      {
+         "name": "resume",
+         "type": "text",
+         "contents": "TODO ...",
+         "description": "My resume for job hunter."
+      }
+   ]
+}
