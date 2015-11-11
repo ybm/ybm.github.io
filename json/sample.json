@@ -5,7 +5,7 @@
       {
          "name": "README",
          "type": "text",
-         "contents": "My name is Yanbin MA. I am a Software Engineer at Beijing. This is my website.\n\nIf you need help, type \"help\".\n\nYou can contact me at ma.yanbin@qq.com.",
+         "contents": "My name is Yanbin MA. I am a Software Engineer at Beijing. This is my website.\n\nYou can contact me at ma.yanbin@qq.com.\n\nIf you need help, type \"help\".",
          "description": "Read me to know me."
       },
       {

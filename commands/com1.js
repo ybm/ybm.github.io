@@ -210,3 +210,57 @@ COMMANDS.help = function(argv, cb) {
    }
    cb();
 }
+
+
+COMMANDS.whoami = function(argv, cb) {
+   this._terminal.write(this._terminal.config.username);
+   cb();
+}
+
+COMMANDS.pwd = function(argv, cb) {
+   this._terminal.write(this._terminal.getCWD());
+   cb();
+}
+
+COMMANDS.fortune = function(argv, cb) {
+   var database = [
+       "A career is great, but you can't run your fingers through its hair.",
+       "Always there remain portions of our heart into which no one is able to enter, invite them as we may.",
+       "Lonely is a man without love.<br>        -- Englebert Humperdinck",
+       "Fat people of the world unite, we've got nothing to lose!",
+       "I don't care where I sit as long as I get fed.<br>        -- Calvin Trillin",
+       "Waiter: \"Tea or coffee, gentlemen?\"<br>1st customer: \"I'll have tea.\"<br>2nd customer: \"Me, too -- and be sure the glass is clean!\"<br>        (Waiter exits, returns)<br>Waiter: \"Two teas.  Which one asked for the clean glass?\"",
+       "Between grand theft and a legal fee, there only stands a law degree.",
+       "Why does New Jersey have more toxic waste dumps and California have more lawyers?<br><br>New Jersey had first choice.",
+       "A 'full' life in my experience is usually full only of other people's demands.",
+       "A city is a large community where people are lonesome together<br>        -- Herbert Prochnow",
+       "A real person has two reasons for doing anything ... a good reason and the real reason.",
+       "After living in New York, you trust nobody, but you believe everything. Just in case.",
+       "All men have the right to wait in line.",
+       "People respond to people who respond.",
+       "A boy gets to be a man when a man is needed.<br>        -- John Steinbeck",
+       "A beautiful man is paradise for the eyes, hell for the soul, and purgatory for the purse.",
+       "How beautiful are thy feet with shoes, O prince's daughter! the joints of thy thighs are like jewels, the work of the hands of a cunning workman.  Thy navel is like a round goblet, which wanteth not liquor:  thy belly is like an heap of wheat set about with lillies. Thy two breasts are like two young roses that are twins.<br>[Song of Solomon 7:1-3 (KJV)]",
+       "!07/11 PDP a ni deppart m'I  !pleH",
+       "1: No code table for op: ++post",
+       "A LISP programmer knows the value of everything, but the cost of nothing.<br>        -- Alan Perlis",
+       "Remember: use logout to logout.",
+       "Except for 75% of the women, everyone in the whole world wants to have sex.<br>        -- Ellyn Mustard",
+       "FORTUNE DISCUSSES THE OBSCURE FILMS: #3<br><br>MIRACLE ON 42ND STREET:<br>    Santa Claus, in the off season, follows his heart's desire and tries to make it big on Broadway.<br>    Santa sings and dances his way into your heart.",
+       "(1) Everything depends.<br>(2) Nothing is always.<br>(3) Everything is sometimes.",
+       "A friend in need is a pest indeed.",
+       "(1) Avoid fried meats which angry up the blood.<br>(2) If your stomach antagonizes you, pacify it with cool thoughts.<br>(3) Keep the juices flowing by jangling around gently as you move.<br>(4) Go very lightly on the vices, such as carrying on in society, as the social ramble ain't restful.<br>(5) Avoid running at all times.<br>(6) Don't look back, something might be gaining on you.<br>        -- S. Paige, c. 1951",
+       "All is fear in love and war.",
+       "Death is Nature's way of recycling human beings.",
+       "Death is only a state of mind."
+   ];
+
+   var rand = parseInt(Math.random() * database.length);
+   this._terminal.write(database[rand]);
+   cb();
+}
+
+COMMANDS.date = function(argv, cb) {
+   this._terminal.write(new Date().toUTCString());
+   cb();
+}
