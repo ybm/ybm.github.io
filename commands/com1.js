@@ -53,9 +53,9 @@ COMMANDS.cd = function(argv, cb) {
       filename = '~';
    entry = this._terminal.getEntry(filename);
    if (!entry)
-      this._terminal.write('bash: cd: ' + filename + ': No such file or directory');
+      this._terminal.write('cd: ' + filename + ': No such file or directory');
    else if (entry.type !== 'dir')
-      this._terminal.write('bash: cd: ' + filename + ': Not a directory.');
+      this._terminal.write('cd: ' + filename + ': Not a directory.');
    else
       this._terminal.cwd = entry;
    cb();
@@ -262,5 +262,75 @@ COMMANDS.fortune = function(argv, cb) {
 
 COMMANDS.date = function(argv, cb) {
    this._terminal.write(new Date().toUTCString());
+   cb();
+}
+
+COMMANDS.cal = function(argv, cb) {
+   var month, year, localtime = new Date();
+   switch(argv.length) {
+    case 2:
+        month = parseInt(argv[0]) - 1;
+        if (month < 1 || 12 < month) {
+            this._terminal.write('cal: illegal month value: use 1-12');
+            cb();
+            return;
+        }
+        year = parseInt(argv[1]);
+        if (year < 1 || 9999 < year) {
+            this._terminal.write('cal: illegal year value: use 1-9999');
+            cb();
+            return;
+        }
+        break;
+    case 0:
+        month = localtime.getMonth();
+        year = localtime.getFullYear();
+        break;
+    default:
+        this._terminal.write('cal: usage: cal [month year]');
+        cb();
+        return;
+   }
+
+   var amonth = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+   ], aday = [
+        '',
+        ' 1', ' 2', ' 3', ' 4', ' 5', ' 6', ' 7',
+        ' 8', ' 9', '10', '11', '12', '13', '14',
+        '15', '16', '17', '18', '19', '20', '21',
+        '22', '23', '24', '25', '26', '27', '28',
+        '29', '30', '31'
+   ];
+
+   var table = [],
+        weekday = new Date(year, month, 1).getDay(),
+        days = new Date(year, month + 1, 0).getDate();
+   while (weekday--) {
+       table.push('  ');
+   }
+   for (var i = 1; i <= days; i++) {
+       table.push(aday[i]);
+   }
+   if (month == localtime.getMonth() && year == localtime.getFullYear) {
+   }
+
+   console.log(aday);
+   var header = amonth[month] + ' ' + year,
+        padding = parseInt((20 - header.length) / 2);
+   while (padding--) {
+       this._terminal.write(' ');
+   }
+   this._terminal.write(header + '<br>');
+   this._terminal.write('Su Mo Tu We Th Fr Sa<br>');
+   var len = table.length, tables = [], i = 0;
+   while (i < len) {
+       tables.push(table.slice(i, i += 7));
+   }
+   tables.forEach(function (line) {
+       this._terminal.write(line.join(' ') + '<br>');
+   }, this);
+   this._terminal.write('<br>');
    cb();
 }
