@@ -218,7 +218,9 @@ COMMANDS.whoami = function(argv, cb) {
 }
 
 COMMANDS.pwd = function(argv, cb) {
-   this._terminal.write(this._terminal.getCWD());
+   var pwd = this._terminal.getCWD();
+   pwd = pwd.replace(/^~/, '/home/' + this._terminal.config.username);
+   this._terminal.write(pwd);
    cb();
 }
 
@@ -341,5 +343,19 @@ COMMANDS.cal = function(argv, cb) {
        this._terminal.write(line.join(' ') + '<br>');
    }, this);
    this._terminal.write('<br>');
+   cb();
+}
+
+COMMANDS.echo = function(argv, cb) {
+   this._terminal.write(argv.join(' '));
+   cb();
+}
+
+
+COMMANDS.history = function(argv, cb) {
+   this._terminal._history.reverse().forEach(function (command, index) {
+       if (index < 10) this._terminal.write(' ');
+       this._terminal.write(index + '  ' + command + '<br>');
+   }, this);
    cb();
 }
