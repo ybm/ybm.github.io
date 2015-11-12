@@ -29,8 +29,8 @@
       },
       {
          "name": "resume",
-         "type": "text",
-         "contents": "TODO ...",
+         "type": "exec",
+         "contents": "http://yianbin.github.io/files/the-resume-of-ybm.pdf",
          "description": "My resume for job hunter."
       }
    ]
