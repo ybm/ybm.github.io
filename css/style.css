@@ -37,7 +37,7 @@ div.jsterm {
    font-family: monospace;
    font-size: 16px;
    color: #E0E0E0;
-   width: 900px;
+   min-width: 800px;
    margin-bottom: 20px;
    white-space: pre-wrap;
 }
@@ -79,4 +79,11 @@ div.jsterm .img, div.jsterm .img a {
 
 #blinker {
     line-height: .9em;
+}
+
+.jsterm.fullscreen div:not(#screen) {
+   display: none;
+}
+
+.jsterm.fullscreen div#screen {
 }

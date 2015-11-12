@@ -99,8 +99,7 @@
          window.onkeydown = function(e) {
             var key = (e.which) ? e.which : e.keyCode;
 
-            if (key == 8 || key == 9 || key == 13 || key == 46 || key == 38 ||
-                key == 40 || e.ctrlKey)
+            if (key == 8 || key == 9 || key == 13 || key == 46 || key == 38 || key == 40 || e.ctrlKey)
                e.preventDefault();
             this._handleSpecialKey(key, e);
          }.bind(this);
@@ -404,7 +403,6 @@
          var stdout = this.stdout(),
              parts,
              pathParts;
-
          if (!stdout)
             return;
          // Backspace/delete.
@@ -438,6 +436,12 @@
             }
          // Ctrl+C, Ctrl+D.
          } else if ((key == 67 || key == 68) && e.ctrlKey) {
+            if (this.FULLSCREENFLAG == true && key == 67) {
+               this.div.innerHTML = this.termSession;
+               this.div.classList.remove('fullscreen');
+               this._prompt();
+               return;
+            }
             if (key == 67)
                this.write('^C');
             this.defaultReturnHandler();
@@ -469,7 +473,7 @@
             if (command in this.commands) {
                this.commands[command](args, function() {
                   this.defaultReturnHandler();
-                  this._prompt()
+                  this._prompt();
                }.bind(this));
             } else if (entry && entry.type == 'exec') {
                window.open(entry.contents, '_blank');
@@ -479,11 +483,24 @@
                this._prompt();
             }
          } else {
-            this._prompt()
+            this._prompt();
          }
          if (fullCommand.length)
             this._history.unshift(fullCommand);
          this._historyIndex = -1;
+      },
+
+      fullScreen: function(cb) {
+         this.FULLSCREENFLAG = true;
+         this.termSession = this.div.innerHTML;
+         this.div.innerHTML = '';
+         this._prompt();
+         this.div.classList.add('fullscreen');
+         var element = document.createElement('div');
+         element.id = 'screen';
+         element.style.height = window.innerHeight - 20 + 'px';
+         console.log(element)
+         this.div.appendChild(element);
       }
    };
 

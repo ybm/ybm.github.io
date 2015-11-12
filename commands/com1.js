@@ -359,3 +359,8 @@ COMMANDS.history = function(argv, cb) {
    }, this);
    cb();
 }
+
+COMMANDS.matrix = function(argv, cb) {
+   this._terminal.fullScreen();
+}
+
