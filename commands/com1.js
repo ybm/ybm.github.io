@@ -304,6 +304,10 @@ COMMANDS.cal = function(argv, cb) {
         '29', '30', '31'
    ];
 
+   if (month == localtime.getMonth() && year == localtime.getFullYear()) {
+       aday[localtime.getDate()] = '<span class="exec">' + aday[localtime.getDate()] + '</span>';
+   }
+
    var table = [],
         weekday = new Date(year, month, 1).getDay(),
         days = new Date(year, month + 1, 0).getDate();
@@ -313,10 +317,15 @@ COMMANDS.cal = function(argv, cb) {
    for (var i = 1; i <= days; i++) {
        table.push(aday[i]);
    }
-   if (month == localtime.getMonth() && year == localtime.getFullYear) {
+   // September 1752 is a special
+   if (month == 8 && year == 1752) {
+       table = [
+           '  ', '  ', '01', '02', '14', '15', '16',
+           '17', '18', '19', '20', '21', '22', '23',
+           '24', '25', '26', '27', '28', '29', '30'
+       ];
    }
 
-   console.log(aday);
    var header = amonth[month] + ' ' + year,
         padding = parseInt((20 - header.length) / 2);
    while (padding--) {

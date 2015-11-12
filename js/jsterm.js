@@ -351,7 +351,7 @@
             if (stdout) {
                blinker = document.createElement('span');
                blinker.id = 'blinker';
-               blinker.innerHTML = '&#x2588';
+               blinker.innerHTML = '|';
                stdout.parentNode.appendChild(blinker);
             }
          }
