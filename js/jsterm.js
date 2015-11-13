@@ -46,11 +46,17 @@
    }
 
    function loadFS(name, cb) {
+      if (window.localStorage.hasOwnProperty('fs')) {
+         cb(window.localStorage.getItem('fs'));
+         return;
+      }
       var ajax = new XMLHttpRequest();
 
       ajax.onreadystatechange = function() {
-         if (ajax.readyState == 4 && ajax.status == 200)
+         if (ajax.readyState == 4 && ajax.status == 200) {
+            window.localStorage && window.localStorage.setItem('fs', ajax.responseText);
             cb(ajax.responseText);
+         }
       };
       ajax.open('GET', name);
       ajax.send();
@@ -151,9 +157,8 @@
          for (var i = 0; i < parts.length; ++i) {
             entry = this._dirNamed(parts[i], entry.contents);
             if (!entry)
-               return null;
+               return;
          }
-
          return entry;
       },
 
@@ -258,6 +263,10 @@
                opts = argv[i].substring(1);
                for (var j = 0; j < opts.length; ++j)
                   args.push(opts.charAt(j));
+            } if (argv[i].startswith('&')) {
+               args.push(argv[i].replace(/&gt;/g, '>'));
+               args.push(argv[i+1]);
+               break;
             } else {
                filenames.push(argv[i]);
             }
@@ -268,6 +277,11 @@
       writeLink: function(e, str) {
          this.write('<span class="' + e.type + '">' + this._createLink(e, str) +
              '</span>');
+      },
+
+      writeFile: function(e, path) {
+         console.log('building ...', path)
+         console.log('building ...', e)
       },
 
       stdout: function() {

@@ -347,7 +347,19 @@ COMMANDS.cal = function(argv, cb) {
 }
 
 COMMANDS.echo = function(argv, cb) {
-   this._terminal.write(argv.join(' '));
+   var string = this._terminal.parseArgs(argv).filenames.join(' '),
+         args = this._terminal.parseArgs(argv).args;
+   if (args.length > 1 && args[0] == '>') {
+       var entry = {
+           'name': args[1].match(/[^/]+$/)[0],
+           'type': 'text',
+           'contents': string,
+           'description': 'No description'
+       };
+       this._terminal.writeFile(entry, args[1]);
+   } else {
+       this._terminal.write(string);
+   }
    cb();
 }
 
