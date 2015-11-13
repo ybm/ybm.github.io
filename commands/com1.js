@@ -362,5 +362,11 @@ COMMANDS.history = function(argv, cb) {
 
 COMMANDS.matrix = function(argv, cb) {
    this._terminal.fullScreen();
+   var matrix = document.createElement('ul');
+   matrix.classList.add('matrix');
+   var s = '<li></li>', i = 128;
+   while (i--) s += '<li></li>';
+   matrix.innerHTML = s;
+   document.getElementById('screen').appendChild(matrix);
 }
 

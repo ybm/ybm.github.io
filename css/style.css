@@ -17,6 +17,7 @@ html {
 
 body {
    background: black;
+   overflow: hidden;
 }
 
 .jsterm a {

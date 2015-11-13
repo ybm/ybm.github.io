@@ -499,7 +499,6 @@
          var element = document.createElement('div');
          element.id = 'screen';
          element.style.height = window.innerHeight - 20 + 'px';
-         console.log(element)
          this.div.appendChild(element);
       }
    };
