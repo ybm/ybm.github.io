@@ -223,6 +223,9 @@ COMMANDS.help = function(argv, cb) {
 }
 
 
+// Copyright 2015 Yanbin MA (yianbin@gmail.com)
+// The following code is written by Yanbin MA
+// Enjoy it!
 COMMANDS.whoami = function(argv, cb) {
     this._terminal.write(this._terminal.config.username);
     cb();
@@ -424,4 +427,59 @@ COMMANDS.ascii = function(argv, cb) {
     this._terminal.write(' 14 0E SO   30 1E RS   46 2E .  62 3E &gt;  78 4E N  94 5E ^  110 6E n  126 7E ~<br>');
     this._terminal.write(' 15 0F SI   31 1F US   47 2F /  63 3F ?  79 4F O  95 5F _  111 6F o  127 7F DEL<br>');
     cb();
+}
+
+COMMANDS.todo = function(argv, cb) {
+    switch (argv.length) {
+    case 0:
+        if (window.localStorage.hasOwnProperty('td')) {
+            var data = JSON.parse(window.localStorage.getItem('td'));
+            this._terminal.write('Todo<br>');
+            for (var i = 0; i < data.todo.length; i++) {
+                this._terminal.write('    ' + parseInt(i + 1) + '. ' + data.todo[i] + '<br>');
+            }
+            this._terminal.write('Done<br>');
+            for (var i = 0; i < data.done.length; i++) {
+                this._terminal.write('    ' + parseInt(i + 1) + '. ' + data.done[i] + '<br>');
+            }
+        } else {
+            this._terminal.write('No data');
+        }
+        cb();
+        return;
+    case 2:
+        if (argv[0] == 'done' && !isNaN(argv[1])) {
+            if (window.localStorage.hasOwnProperty('td')) {
+                var id = parseInt(argv[1]) - 1, data = JSON.parse(window.localStorage.getItem('td'));
+                if (id >= 0 && data.todo.length >= id) {
+                    var item = data.todo.splice(id, 1);
+                    data.done.push(item);
+                    window.localStorage.setItem('td', JSON.stringify(data));
+                }
+            }
+            cb ();
+            return;
+        } else if (argv[0] == 'delete' && !isNaN(argv[1])) {
+            // TODO
+            cb();
+            return;
+        }
+    default:
+        if (argv.length >1 && argv[0] == 'add') {
+            if (!window.localStorage.hasOwnProperty('td')) {
+                window.localStorage.setItem('td', JSON.stringify({
+                    'todo': [],
+                    'done': []
+                }));
+            }
+            var data = JSON.parse(window.localStorage.getItem('td'));
+            data.todo.push(argv.slice(1).join(' ').trim());
+            window.localStorage.setItem('td', JSON.stringify(data));
+            cb();
+            return;
+        }
+        this._terminal.write('todo: error input');
+        cb();
+        return;
+    }
 }
