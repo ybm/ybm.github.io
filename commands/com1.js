@@ -438,9 +438,9 @@ COMMANDS.todo = function(argv, cb) {
             for (var i = 0; i < data.todo.length; i++) {
                 this._terminal.write('        ' + parseInt(i + 1) + '. ' + data.todo[i] + '<br>');
             }
-            this._terminal.write('    <span class="maroon bold">Done list:</span><br>');
+            this._terminal.write('    <span class="green bold">Done list:</span><br>');
             for (var i = 0; i < data.done.length; i++) {
-                this._terminal.write('        ' + parseInt(i + 1) + '. <span class="gray bold">' + data.done[i] + '</span><br>');
+                this._terminal.write('        ' + parseInt(i + 1) + '. <span class="gray">' + data.done[i] + '</span><br>');
             }
         } else {
             this._terminal.write('todo: No data in Todo list');
