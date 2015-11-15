@@ -434,16 +434,16 @@ COMMANDS.todo = function(argv, cb) {
     case 0:
         if (window.localStorage.hasOwnProperty('td')) {
             var data = JSON.parse(window.localStorage.getItem('td'));
-            this._terminal.write('Todo<br>');
+            this._terminal.write('    <span class="red bold">Todo list:</span><br>');
             for (var i = 0; i < data.todo.length; i++) {
-                this._terminal.write('    ' + parseInt(i + 1) + '. ' + data.todo[i] + '<br>');
+                this._terminal.write('        ' + parseInt(i + 1) + '. ' + data.todo[i] + '<br>');
             }
-            this._terminal.write('Done<br>');
+            this._terminal.write('    <span class="maroon bold">Done list:</span><br>');
             for (var i = 0; i < data.done.length; i++) {
-                this._terminal.write('    ' + parseInt(i + 1) + '. ' + data.done[i] + '<br>');
+                this._terminal.write('        ' + parseInt(i + 1) + '. <span class="gray bold">' + data.done[i] + '</span><br>');
             }
         } else {
-            this._terminal.write('No data');
+            this._terminal.write('todo: No data in Todo list');
         }
         cb();
         return;
@@ -463,6 +463,10 @@ COMMANDS.todo = function(argv, cb) {
             // TODO
             cb();
             return;
+        } else if (argv[0] == 'reset') {
+            window.localStorage.removeItem('td');
+            cb();
+            return;
         }
     default:
         if (argv.length >1 && argv[0] == 'add') {
@@ -478,7 +482,7 @@ COMMANDS.todo = function(argv, cb) {
             cb();
             return;
         }
-        this._terminal.write('todo: error input');
+        this._terminal.write('todo: invalid arguments');
         cb();
         return;
     }
