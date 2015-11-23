@@ -2,6 +2,12 @@
 jsterm is a terminal simulator that uses a JSON filesystem. To see it in use,
 check out [clarkduvall.com](http://clarkduvall.com).
 
+## What's new
+
+This code is so cool, and I add more functional feature and command: `whoami`, 
+`pwd`, `fortune`, `date`, `cal`, `echo`, `history`, `matrix`, `ascii`, `todo` 
+and even more in future possible. [Yanbin MA]
+
 ## Disclaimer
 Most of this was written awhile ago when I knew JavaScript about as well as I
 know Spanish (which is a little, but not much). It is due for a rewrite with

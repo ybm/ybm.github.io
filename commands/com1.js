@@ -434,19 +434,23 @@ COMMANDS.todo = function(argv, cb) {
     case 0:
         if (window.localStorage.hasOwnProperty('td')) {
             var data = JSON.parse(window.localStorage.getItem('td'));
-            this._terminal.write('    <span class="red bold">Todo list:</span><br>');
             for (var i = 0; i < data.todo.length; i++) {
-                this._terminal.write('        ' + parseInt(i + 1) + '. ' + data.todo[i] + '<br>');
-            }
-            this._terminal.write('    <span class="green bold">Done list:</span><br>');
-            for (var i = 0; i < data.done.length; i++) {
-                this._terminal.write('        ' + parseInt(i + 1) + '. <span class="gray">' + data.done[i] + '</span><br>');
+                this._terminal.write('<span class="orange">' + parseInt(i + 1) + '. ' + data.todo[i] + '</span><br>');
             }
         } else {
-            this._terminal.write('todo: No data in Todo list');
+            this._terminal.write('todo: 0 item');
         }
         cb();
         return;
+    case 1:
+        if (argv[0] == 'reset') {
+            this._terminal.returnHandler = function () {
+                this.write('Do you want reset todo list (y/n): ');
+                this.scroll();
+                window.localStorage.removeItem('td');
+            }
+            .bind(this._terminal);
+        }
     case 2:
         if (argv[0] == 'done' && !isNaN(argv[1])) {
             if (window.localStorage.hasOwnProperty('td')) {

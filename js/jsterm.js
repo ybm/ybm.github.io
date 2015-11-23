@@ -282,8 +282,7 @@
                     opts = argv[i].substring(1);
                     for (var j = 0; j < opts.length; ++j)
                         args.push(opts.charAt(j));
-                }
-                if (argv[i].startswith('&')) {
+                }else if (argv[i].startswith('&')) {
                     args.push(argv[i].replace(/&gt;/g, '>'));
                     args.push(argv[i + 1]);
                     break;
