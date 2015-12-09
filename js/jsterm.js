@@ -497,6 +497,9 @@
                     stdout.innerHTML = buffer;
                 }
                 .bind(this));
+                // Ctrl+U
+            } else if (key == 85 && e.ctrlKey) {
+                stdout.innerHTML = '';
             }
         },
         

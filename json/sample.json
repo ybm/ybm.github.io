@@ -11,7 +11,7 @@
       {
          "name": "blog",
          "type": "exec",
-         "contents": "http://yianbin.github.io/",
+         "contents": "//yianbin.github.io/",
          "description": "My blog host on GitHub."
       },
       {
@@ -30,7 +30,7 @@
       {
          "name": "resume",
          "type": "exec",
-         "contents": "http://yianbin.github.io/files/the-resume-of-ybm.pdf",
+         "contents": "//yianbin.github.io/files/the-resume-of-ybm.pdf",
          "description": "My resume for job hunter."
       }
    ]
