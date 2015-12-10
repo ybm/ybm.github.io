@@ -491,3 +491,10 @@ COMMANDS.todo = function(argv, cb) {
         return;
     }
 }
+
+COMMANDS.open = function(argv, cb) {
+    var input = argv.join('').trim(), url = input.replace(/^(?!http)/, 'http://');
+    window.open(url, '_blank');
+    cb();
+}
+

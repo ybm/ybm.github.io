@@ -11,7 +11,7 @@
       {
          "name": "blog",
          "type": "exec",
-         "contents": "//yianbin.github.io/",
+         "contents": "https://yianbin.github.io/",
          "description": "My blog host on GitHub."
       },
       {
@@ -28,9 +28,15 @@
          "description": "Some photos you will like."
       },
       {
+         "name": "musics",
+         "type": "dir",
+         "contents": [],
+         "description": "The musics I'd like."
+      },
+      {
          "name": "resume",
          "type": "exec",
-         "contents": "//yianbin.github.io/files/the-resume-of-ybm.pdf",
+         "contents": "https://yianbin.github.io/files/the-resume-of-ybm.pdf",
          "description": "My resume for job hunter."
       }
    ]
