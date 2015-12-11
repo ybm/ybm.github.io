@@ -499,6 +499,7 @@ COMMANDS.open = function(argv, cb) {
 }
 
 COMMANDS.doubanfm = function(argv, cb) {
+    this._terminal.write('turnning on ...');
     var channel = 2;
     $.ajax({
         type: 'get',
@@ -509,9 +510,9 @@ COMMANDS.doubanfm = function(argv, cb) {
             'channel': channel,
             'type': 'n'
         },
-        dataType: 'jsonp'
-    }).success(function (date) {
-        console.log(data)
+        success: function (data) {
+            console.log(data)
+        }
     });
     cb();
 }
