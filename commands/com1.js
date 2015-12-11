@@ -506,9 +506,9 @@ COMMANDS.doubanfm = function(argv, cb) {
         data: {
             'app_name': 'radio_android',
             'version': 100,
-            'channel': channel
-        },
-        dataType: 'jsonp'
+            'channel': channel,
+            'type': 'n'
+        }
     }).success(function (date) {
         console.log(data)
     });
