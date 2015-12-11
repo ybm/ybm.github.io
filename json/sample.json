@@ -28,12 +28,6 @@
          "description": "Some photos you will like."
       },
       {
-         "name": "musics",
-         "type": "dir",
-         "contents": [],
-         "description": "The musics I'd like."
-      },
-      {
          "name": "resume",
          "type": "exec",
          "contents": "https://yianbin.github.io/files/the-resume-of-ybm.pdf",

@@ -498,3 +498,19 @@ COMMANDS.open = function(argv, cb) {
     cb();
 }
 
+COMMANDS.doubanfm = function(argv, cb) {
+    var channel = 2;
+    $.ajax({
+        type: 'get',
+        url: 'http://www.douban.com/j/app/radio/people',
+        data: {
+            'app_name': 'radio_android',
+            'version': 100,
+            'channel': channel
+        },
+        dataType: 'jsonp'
+    }).success(function (date) {
+        console.log(data)
+    });
+    cb();
+}
