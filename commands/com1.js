@@ -508,7 +508,8 @@ COMMANDS.doubanfm = function(argv, cb) {
             'version': 100,
             'channel': channel,
             'type': 'n'
-        }
+        },
+        dataType: 'jsonp'
     }).success(function (date) {
         console.log(data)
     });
