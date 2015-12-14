@@ -493,11 +493,18 @@ COMMANDS.todo = function(argv, cb) {
 }
 
 COMMANDS.google = function(argv, cb) {
+    var timestamp = new Date().getTime();
+    var q = this._terminal.parseArgs(argv).filenames.join(' ');
+    console.log(q)
     $.ajax({
         type: 'get',
-        url: 'http://cmd.to/api/v1/apps/cmd/search/npm',
+        url: 'http://cmd.to/api/v1/apps/cmd/search/' + q,
+        data: {
+            '_': timestamp
+        },
+        dataType: 'text',
         success: function (data) {
-            console.log(data)
+            console.log(callback(data))
         }
     });
     cb();
