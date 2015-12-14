@@ -492,24 +492,10 @@ COMMANDS.todo = function(argv, cb) {
     }
 }
 
-COMMANDS.open = function(argv, cb) {
-    var input = argv.join('').trim(), url = input.replace(/^(?!http)/, 'http://');
-    window.open(url, '_blank');
-    cb();
-}
-
-COMMANDS.doubanfm = function(argv, cb) {
-    this._terminal.write('turnning on ...');
-    var channel = 2;
+COMMANDS.google = function(argv, cb) {
     $.ajax({
         type: 'get',
-        url: 'http://www.douban.com/j/app/radio/people',
-        data: {
-            'app_name': 'radio_android',
-            'version': 100,
-            'channel': channel,
-            'type': 'n'
-        },
+        url: 'http://cmd.to/api/v1/apps/cmd/search/npm',
         success: function (data) {
             console.log(data)
         }
