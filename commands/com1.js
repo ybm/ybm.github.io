@@ -493,19 +493,44 @@ COMMANDS.todo = function(argv, cb) {
 }
 
 COMMANDS.google = function(argv, cb) {
+    var that = this;
     var timestamp = new Date().getTime();
     var q = this._terminal.parseArgs(argv).filenames.join(' ');
-    console.log(q)
+    if (q == '') {
+        this._terminal.write('google: invalid arguments');
+        cb();
+        return;
+    }
+    this._terminal.write('  ___                _ <br>');
+    this._terminal.write(' / __|___  ___  __ _| |___<br>');
+    this._terminal.write('| (_ / _ \\/ _ \\/ _` |   -_)<br>');
+    this._terminal.write(' \\___\\___/\\___/\\__, |_\\___|<br>');
+    this._terminal.write('               |___/<br>');
+
+    url = 'http://jsonpwrapper.com/?urls%5B%5D=http%3A%2F%2Fcmd.to%2Fapi%2Fv1%2Fapps%2Fcmd%2Fsearch%2F';
     $.ajax({
         type: 'get',
-        url: 'http://cmd.to/api/v1/apps/cmd/search/' + q,
-        data: {
-            '_': timestamp
-        },
-        dataType: 'text',
-        success: function (data) {
-            console.log(callback(data))
+        url: url + encodeURI(q),
+        dataType: 'jsonp'
+
+    }).done(function (data) {
+        var data = JSON.parse(data[0].body);
+        var goog = [];
+
+        console.log(data);
+        goog = goog.concat(data.datas[0].responseData.results);
+        goog = goog.concat(data.datas[1].responseData.results);
+        // goog = goog.concat(data.datas[2].responseData.results);
+
+        for (var i = 0; i < goog.length; i++) {
+            var s = '<pre class="google">' + i + ': <a href="' + goog[i].url +'">' + goog[i].title +
+                    ' <i>(' + goog[i].visibleUrl + ')</i></a><br>' + goog[i].content + '</pre>';
+            that._terminal.write(s);
         }
+    }).fail(function () {
+        that._terminal.writing('google: Network connect error');
+    }).always(function () {
+        cb();
     });
-    cb();
+
 }

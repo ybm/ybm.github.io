@@ -4,6 +4,7 @@ html {
 body {
    background: black;
    overflow: hidden;
+   font-family: Monaco, Menlo, Consolas, "Microsoft Yahei", monospace;
    -webkit-font-smoothing: antialiased;
 }
 
@@ -22,7 +23,6 @@ body {
 
 div.jsterm {
    background: black;
-   font-family: monospace;
    font-size: 16px;
    color: #E0E0E0;
    min-width: 800px;
@@ -95,4 +95,18 @@ div.jsterm .silver  { color: #DDDDDD; }
 
 div.jsterm .bold {
    font-weight: bold;
+}
+
+div.jsterm pre.google {
+   color: #c3c3c3;
+   font-size: 0.9em;
+   margin: 0 0 8px 0;
+}
+div.jsterm pre.google a {
+   color: #f7f7f7;
+   border-bottom: 1px dotted;
+   text-decoration: none;
+}
+div.jsterm pre.google a i {
+   color: gray;
 }

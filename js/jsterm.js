@@ -390,7 +390,7 @@
                 if (stdout) {
                     blinker = document.createElement('span');
                     blinker.id = 'blinker';
-                    blinker.innerHTML = '|';
+                    blinker.innerHTML = '_';
                     stdout.parentNode.appendChild(blinker);
                 }
             }
