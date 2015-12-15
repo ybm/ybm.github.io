@@ -501,11 +501,11 @@ COMMANDS.google = function(argv, cb) {
         cb();
         return;
     }
-    this._terminal.write('  ___                _ <br>');
-    this._terminal.write(' / __|___  ___  __ _| |___<br>');
-    this._terminal.write('| (_ / _ \\/ _ \\/ _` |   -_)<br>');
-    this._terminal.write(' \\___\\___/\\___/\\__, |_\\___|<br>');
-    this._terminal.write('               |___/<br>');
+    this._terminal.write('  <span class="blue">___</span>                <span class="green">_</span> <br>');
+    this._terminal.write(' <span class="blue">/ __|</span><span class="red">___</span>  <span class="yellow">___</span>  <span class="blue">__</span> _<span class="green">| |<span><span class="red">___</span><br>');
+    this._terminal.write('<span class="blue">| (_</span> <span class="red">/ _ \\</span><span class="yellow">/ _ \\</span><span class="blue">/ _`</span> <span class="green">|</span>   <span class="red">-_)</span><br>');
+    this._terminal.write(' <span class="blue">\\___</span><span class="red">\\___/</span><span class="yellow">\\___/</span><span class="blue">\\__,</span> <span class="green">|_</span><span class="red">\\___|</span><br>');
+    this._terminal.write('               <span class="blue">|___/</span><br>');
 
     url = 'http://jsonpwrapper.com/?urls%5B%5D=http%3A%2F%2Fcmd.to%2Fapi%2Fv1%2Fapps%2Fcmd%2Fsearch%2F';
     $.ajax({
@@ -517,7 +517,6 @@ COMMANDS.google = function(argv, cb) {
         var data = JSON.parse(data[0].body);
         var goog = [];
 
-        console.log(data);
         goog = goog.concat(data.datas[0].responseData.results);
         goog = goog.concat(data.datas[1].responseData.results);
         // goog = goog.concat(data.datas[2].responseData.results);

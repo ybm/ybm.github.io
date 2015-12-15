@@ -76,21 +76,21 @@ div.jsterm .img, div.jsterm .img a {
 .jsterm.fullscreen div#screen {
 }
 
-div.jsterm .navy  { color: #001f3f; }
-div.jsterm .blue  { color: #0074D9; }
-div.jsterm .aqua  { color: #7FDBFF; }
-div.jsterm .teal  { color: #39CCCC; }
-div.jsterm .olive  { color: #3D9970; }
-div.jsterm .green  { color: #2ECC40; }
-div.jsterm .lime  { color: #01FF70; }
+div.jsterm .navy    { color: #001f3f; }
+div.jsterm .blue    { color: #0074D9; }
+div.jsterm .aqua    { color: #7FDBFF; }
+div.jsterm .teal    { color: #39CCCC; }
+div.jsterm .olive   { color: #3D9970; }
+div.jsterm .green   { color: #2ECC40; }
+div.jsterm .lime    { color: #01FF70; }
 div.jsterm .yellow  { color: #FFDC00; }
 div.jsterm .orange  { color: #FF851B; }
-div.jsterm .red  { color: #FF4136; }
+div.jsterm .red     { color: #FF4136; }
 div.jsterm .maroon  { color: #85144b; }
-div.jsterm .fuchsia  { color: #F012BE; }
+div.jsterm .fuchsia { color: #F012BE; }
 div.jsterm .purple  { color: #B10DC9; }
-div.jsterm .black  { color: #111111; }
-div.jsterm .gray  { color: #AAAAAA; }
+div.jsterm .black   { color: #111111; }
+div.jsterm .gray    { color: #AAAAAA; }
 div.jsterm .silver  { color: #DDDDDD; }
 
 div.jsterm .bold {
