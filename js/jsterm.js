@@ -570,7 +570,6 @@
         .enqueue('******')
         .enqueue('cat README')
         .enqueue('help')
-        .enqueue('tree')
         .begin();
     }
     );

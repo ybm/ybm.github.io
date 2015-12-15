@@ -9,6 +9,12 @@
          "description": "Read me to know me."
       },
       {
+         "name": "lab",
+         "type": "exec",
+         "contents": "https://infp.github.io/~ybm/",
+         "description": "Enter my lab."
+      },
+      {
          "name": "blog",
          "type": "exec",
          "contents": "https://yianbin.github.io/",
