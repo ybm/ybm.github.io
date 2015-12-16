@@ -510,7 +510,7 @@ COMMANDS.google = function(argv, cb) {
     url = 'http://jsonpwrapper.com/?urls%5B%5D=http%3A%2F%2Fcmd.to%2Fapi%2Fv1%2Fapps%2Fcmd%2Fsearch%2F';
     $.ajax({
         type: 'get',
-        url: url + encodeURI(q),
+        url: url + encodeURI(encodeURI(q)),
         dataType: 'jsonp'
 
     }).done(function (data) {
