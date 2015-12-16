@@ -27,7 +27,6 @@ div.jsterm {
    color: #E0E0E0;
    font-family: Monaco, Menlo, Consolas, "Microsoft Yahei", monospace;
    min-width: 800px;
-   max-width: 1200px;
    margin-bottom: 20px;
    white-space: pre-wrap;
 }
