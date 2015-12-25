@@ -538,7 +538,7 @@ COMMANDS.vim = function(argv, cb) {
     var filenames = this._terminal.parseArgs(argv).filenames;
 
     this._terminal.fullScreen();
-    var that = this;
+    var that = this, editor;
 
     var dtd = $.Deferred();
     var renderDom = function () {
@@ -546,12 +546,8 @@ COMMANDS.vim = function(argv, cb) {
         vim.classList.add('vim');
         vim.innerHTML = '<textarea id="code" name="code"></textarea>';
         document.getElementById('screen').appendChild(vim);
-        dtd.resolve();
-        return dtd;
-    }
 
-    var newVim = function () {
-        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        editor = CodeMirror.fromTextArea(document.getElementById("code"), {
             lineNumbers: true,
             mode: "text/x-csrc",
             scrollbarStyle: 'null',
@@ -560,26 +556,33 @@ COMMANDS.vim = function(argv, cb) {
             matchBrackets: true,
             showCursorWhenSelecting: true
         });
-        editor.getDoc().setValue('VIM - Vi IMproved\n\nVim is open source and freely distributable\n\nHelp poor children in Uganda!\n\nType  :help<Enter>  for on-line help');
+
+        dtd.resolve();
+        return dtd;
+    }
+
+    var newVim = function () {
+        editor.getDoc().setValue('');
     }
     
     var editVim = function (filename) {
         var entry = that._terminal.getEntry(filename);
         
-        if (!entry)
-            that._terminal.write('vim: ' + filename + ': No such file or directory');
-        else if (entry.type === 'dir')
-            that._terminal.write('vim: ' + filename + ': Is a directory.');
-        else {
-            var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-                lineNumbers: true,
-                mode: "text/x-csrc",
-                scrollbarStyle: 'null',
-                autofocus: true,
-                keyMap: "vim",
-                matchBrackets: true,
-                showCursorWhenSelecting: true
-            });
+        if (!entry) {
+            editor.getDoc().setValue('');
+        } else if (entry.type === 'dir') {
+            console.log(entry.contents);
+            var pwd = that._terminal.getCWD();
+            pwd = pwd.replace(/^~/, '/home/' + that._terminal.config.username);
+            var text = '" ======================================\n';
+            text += '"   ' + pwd + '/' + filename + '\n';
+            text += '"   Sorted by    name\n';
+            text += '" ======================================\n';
+            for (var i = 0; i < entry.contents.length; i++) {
+                text += entry.contents[i].name +'\n';
+            }
+            editor.getDoc().setValue(text.trim());
+        } else {
             editor.getDoc().setValue(entry.contents);
         }
     }

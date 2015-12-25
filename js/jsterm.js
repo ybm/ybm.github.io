@@ -52,10 +52,12 @@
     }
     
     function loadFS(name, cb) {
+        /*
         if (window.localStorage.hasOwnProperty('fs')) {
             cb(window.localStorage.getItem('fs'));
             return;
         }
+        */
         var ajax = new XMLHttpRequest();
         
         ajax.onreadystatechange = function() {
