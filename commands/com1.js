@@ -538,29 +538,60 @@ COMMANDS.vim = function(argv, cb) {
     var filenames = this._terminal.parseArgs(argv).filenames;
 
     this._terminal.fullScreen();
+    var that = this;
 
     var dtd = $.Deferred();
     var renderDom = function () {
         var vim = document.createElement('form');
         vim.classList.add('vim');
-        vim.innerHTML = '<textarea id="code" name="code">Help Uganda children!</textarea>';
+        vim.innerHTML = '<textarea id="code" name="code"></textarea>';
         document.getElementById('screen').appendChild(vim);
         dtd.resolve();
         return dtd;
     }
+
+    var newVim = function () {
+        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+            lineNumbers: true,
+            mode: "text/x-csrc",
+            scrollbarStyle: 'null',
+            autofocus: true,
+            keyMap: "vim",
+            matchBrackets: true,
+            showCursorWhenSelecting: true
+        });
+        editor.getDoc().setValue('VIM - Vi IMproved\n\nVim is open source and freely distributable\n\nHelp poor children in Uganda!\n\nType  :help<Enter>  for on-line help');
+    }
     
-    $.when(renderDom(dtd)).done(function () {
-        if (!filenames.length) {
+    var editVim = function (filename) {
+        var entry = that._terminal.getEntry(filename);
+        
+        if (!entry)
+            that._terminal.write('vim: ' + filename + ': No such file or directory');
+        else if (entry.type === 'dir')
+            that._terminal.write('vim: ' + filename + ': Is a directory.');
+        else {
             var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
                 lineNumbers: true,
+                mode: "text/x-csrc",
                 scrollbarStyle: 'null',
                 autofocus: true,
-                theme: '3024-night',
                 keyMap: "vim",
                 matchBrackets: true,
                 showCursorWhenSelecting: true
             });
-            return;
+            editor.getDoc().setValue(entry.contents);
+        }
+    }
+    $.when(renderDom(dtd)).done(function () {
+        CodeMirror.commands.save = function() {
+            alert("Saving");
+        };
+        if (!filenames.length) {
+            newVim();
+        } else {
+            console.log(filenames[0]);
+            editVim(filenames[0]);
         }
     });
     return;

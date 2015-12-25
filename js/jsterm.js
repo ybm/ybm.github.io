@@ -491,6 +491,9 @@
                 this._prompt();
                 // Ctrl+L
             } else if (key == 76 && e.ctrlKey) {
+                if (this.FULLSCREENFLAG == true) {
+                    return;
+                }
                 var buffer = stdout.innerHTML;
                 this.commands.clear([], function() {
                     this._prompt();
@@ -554,7 +557,7 @@
             this.div.classList.add('fullscreen');
             var element = document.createElement('div');
             element.id = 'screen';
-            element.style.height = window.innerHeight - 20 + 'px';
+            element.style.height = window.innerHeight + 'px';
             this.div.appendChild(element);
         }
     };
