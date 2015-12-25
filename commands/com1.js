@@ -533,3 +533,35 @@ COMMANDS.google = function(argv, cb) {
     });
 
 }
+
+COMMANDS.vim = function(argv, cb) {
+    var filenames = this._terminal.parseArgs(argv).filenames;
+
+    this._terminal.fullScreen();
+
+    var dtd = $.Deferred();
+    var renderDom = function () {
+        var vim = document.createElement('form');
+        vim.classList.add('vim');
+        vim.innerHTML = '<textarea id="code" name="code">Help Uganda children!</textarea>';
+        document.getElementById('screen').appendChild(vim);
+        dtd.resolve();
+        return dtd;
+    }
+    
+    $.when(renderDom(dtd)).done(function () {
+        if (!filenames.length) {
+            var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                lineNumbers: true,
+                scrollbarStyle: 'null',
+                autofocus: true,
+                theme: '3024-night',
+                keyMap: "vim",
+                matchBrackets: true,
+                showCursorWhenSelecting: true
+            });
+            return;
+        }
+    });
+    return;
+}
