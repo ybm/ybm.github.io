@@ -482,6 +482,7 @@
                 if (this.FULLSCREENFLAG == true && key == 67) {
                     this.div.innerHTML = this.termSession;
                     this.div.classList.remove('fullscreen');
+                    this.FULLSCREENFLAG == false;
                     this._prompt();
                     return;
                 }

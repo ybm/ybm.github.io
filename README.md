@@ -1,61 +1,15 @@
 # jsterm
-jsterm is a terminal simulator that uses a JSON filesystem. To see it in use,
-check out [clarkduvall.com](http://clarkduvall.com).
 
-## What's new
+jsterm 是一个用 Javascript 编写的命令行模拟器，最初的版本由 [clarkduvall.com](http://clarkduvall.com) 实现。GitHub 地址是：https://github.com/clarkduvall/jsterm
 
-This code is so cool, and I add more functional feature and command: `whoami`, 
-`pwd`, `fortune`, `date`, `cal`, `echo`, `history`, `matrix`, `ascii`, `todo` 
-and even more in future possible. [Yanbin MA]
+## 新的内容
 
-## Disclaimer
-Most of this was written awhile ago when I knew JavaScript about as well as I
-know Spanish (which is a little, but not much). It is due for a rewrite with
-some cool new features like pipes, writable files, and other magic.
+jsterm 1.0 实现了一个 JSON 文件系统，并在上面编写了 `cat`、`cs`、`ls`、`gimp`、`tree` 等命令以及一系列的命令行快捷键。而新的 jsterm 2.0 中，新增了如下内容：
 
-## How To Use
-At the bottom of the [js/jsterm.js](js/jsterm.js) file,
-there is a series of term.enqueue() calls. This is where the commands are set
-that are run when the page loads. Other changes can be made to personalize your
-terminal. The directory structure is as follows:
-- [commands](commands) - A JS file with all the possible
-  commands that can be run. Add new commands here.
-- [config](config) - A JS file that has basic configuration
-  information. Change things like the prompt here.
-- [css](css) - The CSS used on the page.
-- [images](images) - Image files used in your filesystem.
-- [js](js) - The jsterm implementation.
-- [json](json) - Where the filesystem is stored. Change the
-  term.Init() call in [js/jsterm.js](js/jsterm.js) to change
-  which filesystem is loaded.
-
-For the loading of the filesytem to work locally, you must server the files in
-the directory from a local server. To do this easily, change into the jsterm
-directory and run:
-```
-python -m SimpleHTTPServer 8000
-```
-
-## Filesystem Format
-A filesystem is a recursive grouping of JSON arrays of objects. Each nested
-array represents the listing of items in a directory. Each object in the array
-defines a file or directory. For an example, see
-[json/sample.json](json/sample.json).
-
-## make_fs.py
-This is a script that will create a jsterm filesystem from a real directory.
-Examples of how to make different file types are as follows:
-- Text file (no execute permissions):
-
-```
-This is a text file.
-```
-- Executable/link (MUST BE MARKED EXECUTABLE):
-
-```
-http://google.com
-```
-- Image file: can be any image file with a standard extension (e.g. .png, .jpg)
-
-## Attribution
-If you use jsterm, it would be great if you could link to this GitHub repo. Thanks!
+1. 增加全屏显示 API，并修改快捷键 `Ctrl+C`，使其能够从全屏模式中返回命令行模式；
+2. 增加命令行快捷键 `Ctrl+U`，在命令行中用于删除用户当前输入；
+3. 增加新的 Shell 命令 `whoami`、`pwd`、`fortune`、`date`、`cal`、`echo`、`history` 等；
+4. 新增黑客帝国矩阵 `matrix`；
+5. 新增命令行待办事项程序 `todo`，数据本地保存；
+6. 新增 Google 搜索，使用 `google adele` 可检索关于 Adele 的网页；
+7. 新增 Vim 编辑器，可打开并编辑一个文本文件（编辑器使用 CodeMirror 实现）；
