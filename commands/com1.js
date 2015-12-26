@@ -551,6 +551,7 @@ COMMANDS.vim = function(argv, cb) {
             lineNumbers: true,
             mode: "text/x-csrc",
             scrollbarStyle: 'null',
+            theme: 'solarized dark',
             autofocus: true,
             keyMap: "vim",
             matchBrackets: true,
