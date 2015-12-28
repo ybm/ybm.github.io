@@ -127,11 +127,11 @@ COMMANDS.mkdir = function(argv, cb){
             for (var i=0; i<fs.length; i++) {
                 //  console.log(fs[i].name);
                 //console.log(fs[i].type);
-                handleStuff(fs[i],loc,new_obj);
+                handleStuff(fs[i], loc, new_obj);
             }
         } else {
             //console.log('fs is not array!');
-            handleStuff(fs,loc,new_obj);
+            handleStuff(fs, loc, new_obj);
         }
     }
 
@@ -140,23 +140,28 @@ COMMANDS.mkdir = function(argv, cb){
         if( (fs) && (fs.type == "dir") && (fs.name == current_loc[0])) {
             fs["contents"].push(new_obj);
         } else if (fs.type == "dir") {
-            makeDir(fs["contents"],current_loc,new_obj);
+            makeDir(fs["contents"], current_loc, new_obj);
         }
 
     }
     var dirName = this._terminal.parseArgs(argv).filenames,stdout;
     // The user must specify the name of the directory they want to create
     if (!dirName.length) {
-        this._terminal.write('usage: mkdir [-pv] [-m mode] directory ...');
+        this._terminal.write('usage: mkdir directory ...');
         cb();
     }
     //get our current location
-    loc = new String(/[^/]*$/.exec(this._terminal.getCWD())[0]);
+    var loc = new String(/[^/]*$/.exec(this._terminal.getCWD())[0]);
     loc = [loc];
     //this is the current directory of where the user is in the directory tree
 
     //create new object
-    var new_obj = {"name": dirName[0],"type": "dir","description":"","contents":[]};
+    var new_obj = {
+        "name": dirName[0],
+        "type": "dir",
+        "description": "No description",
+        "contents": []
+    };
     //call the function
     makeDir(this._terminal.fs, loc, new_obj);
 
@@ -164,9 +169,6 @@ COMMANDS.mkdir = function(argv, cb){
         cb();                                                                         
     }.bind(this._terminal));
 }
-
-
-
 
 
 
@@ -433,8 +435,7 @@ COMMANDS.cal = function(argv, cb) {
 }
 
 COMMANDS.echo = function(argv, cb) {
-    var string = this._terminal.parseArgs(argv).filenames.join(' ')
-      , 
+    var string = this._terminal.parseArgs(argv).filenames.join(' '), 
     args = this._terminal.parseArgs(argv).args;
     if (args.length > 1 && args[0] == '>') {
         var entry = {
@@ -654,7 +655,7 @@ COMMANDS.vim = function(argv, cb) {
     }
     $.when(renderDom(dtd)).done(function () {
         CodeMirror.commands.save = function() {
-            alert("Saving");
+            console.log('Svaing ...');
         };
         if (!filenames.length) {
             newVim();
