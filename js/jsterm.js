@@ -62,7 +62,7 @@
         
         ajax.onreadystatechange = function() {
             if (ajax.readyState == 4 && ajax.status == 200) {
-                window.localStorage && window.localStorage.setItem('fs', ajax.responseText);
+                // window.localStorage && window.localStorage.setItem('fs', ajax.responseText);
                 cb(ajax.responseText);
             }
         }
@@ -95,6 +95,10 @@
                 cb && cb();
             }
             .bind(this));
+        },
+        loadFSFromString: function(responseText, cb) {
+            this._addDirs(this.fs, this.fs);
+            if (cb) cb();
         },
         
         loadCommands: function(commands) {
@@ -484,7 +488,7 @@
                 if (this.FULLSCREENFLAG == true && key == 67) {
                     this.div.innerHTML = this.termSession;
                     this.div.classList.remove('fullscreen');
-                    this.FULLSCREENFLAG == false;
+                    this.FULLSCREENFLAG = false;
                     this._prompt();
                     return;
                 }

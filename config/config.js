@@ -19,7 +19,7 @@ CONFIG.prompt = function(cwd, user) {
         return '<span class="user">' + user + 
         '</span>@<span class="host">github.io</span>:<span class="cwd">' + 
         cwd + '</span> $ ';
-    return 'jsterm version 1.0 $ ';
+    return 'jsterm version 2.0 $ ';
 }
 ;
 
