@@ -376,27 +376,22 @@ COMMANDS.cal = function(argv, cb) {
     }
     
     var amonth = [
-    'January', 'February', 'March', 'April', 'May', 'June', 
-    'July', 'August', 'September', 'October', 'November', 'December'
-    ]
-      , aday = [
-    '', 
-    ' 1', ' 2', ' 3', ' 4', ' 5', ' 6', ' 7', 
-    ' 8', ' 9', '10', '11', '12', '13', '14', 
-    '15', '16', '17', '18', '19', '20', '21', 
-    '22', '23', '24', '25', '26', '27', '28', 
-    '29', '30', '31'
+        'January', 'February', 'March', 'April', 'May', 'June', 
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ] , aday = [
+        '', 
+        ' 1', ' 2', ' 3', ' 4', ' 5', ' 6', ' 7', 
+        ' 8', ' 9', '10', '11', '12', '13', '14', 
+        '15', '16', '17', '18', '19', '20', '21', 
+        '22', '23', '24', '25', '26', '27', '28', 
+        '29', '30', '31'
     ];
     
     if (month == localtime.getMonth() && year == localtime.getFullYear()) {
         aday[localtime.getDate()] = '<span class="exec">' + aday[localtime.getDate()] + '</span>';
     }
     
-    var table = []
-      , 
-    weekday = new Date(year,month,1).getDay()
-      , 
-    days = new Date(year,month + 1,0).getDate();
+    var table = [] , weekday = new Date(year,month,1).getDay() , days = new Date(year,month + 1,0).getDate();
     while (weekday--) {
         table.push('  ');
     }
@@ -406,15 +401,13 @@ COMMANDS.cal = function(argv, cb) {
     // September 1752 is a special
     if (month == 8 && year == 1752) {
         table = [
-        '  ', '  ', '01', '02', '14', '15', '16', 
+        '  ', '  ', ' 1', ' 2', '14', '15', '16', 
         '17', '18', '19', '20', '21', '22', '23', 
         '24', '25', '26', '27', '28', '29', '30'
         ];
     }
     
-    var header = amonth[month] + ' ' + year
-      , 
-    padding = parseInt((20 - header.length) / 2);
+    var header = amonth[month] + ' ' + year , padding = parseInt((20 - header.length) / 2);
     while (padding--) {
         this._terminal.write(' ');
     }
