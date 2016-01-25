@@ -37,19 +37,19 @@
       {
          "name": "blog",
          "type": "exec",
-         "contents": "https://yianbin.github.io/",
+         "contents": "http://yianbin.github.io/",
          "description": "My blog host on GitHub."
       },
       {
          "name": "lab",
          "type": "exec",
-         "contents": "https://infp.github.io/~ybm/",
+         "contents": "http://infp.github.io/~ybm/",
          "description": "Enter my lab."
       },
       {
          "name": "resume",
          "type": "exec",
-         "contents": "https://yianbin.github.io/files/the-resume-of-ybm.pdf",
+         "contents": "http://yianbin.github.io/files/the-resume-of-ybm.pdf",
          "description": "My resume for job hunter."
       }
    ]

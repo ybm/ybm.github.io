@@ -608,7 +608,7 @@ COMMANDS.vim = function(argv, cb) {
 
         editor = CodeMirror.fromTextArea(document.getElementById("code"), {
             lineNumbers: true,
-            mode: "text/x-csrc",
+            mode: "text/x-markdown",
             scrollbarStyle: 'null',
             theme: 'blackboard',
             autofocus: true,
