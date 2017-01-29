@@ -5,7 +5,7 @@
       {
          "name": "README",
          "type": "text",
-         "contents": "My name is Yanbin MA. I am a Software Engineer at Beijing. This is my website.\n\nYou can contact me at ma.yanbin@qq.com.\n\nIf you need help, type \"help\".",
+         "contents": "My name is Yanbin Ma. I am a Software Engineer at Beijing. This is my website.\n\nYou can contact me at ma.yanbin@qq.com.\n\nIf you need help, type \"help\".",
          "description": "Read me to know me."
       },
       {
@@ -37,19 +37,19 @@
       {
          "name": "blog",
          "type": "exec",
-         "contents": "http://myanbin.github.io/",
+         "contents": "https://myanbin.github.io/",
          "description": "My blog host on GitHub."
       },
       {
          "name": "lab",
          "type": "exec",
-         "contents": "http://infp.github.io/~ybm/",
+         "contents": "https://infp.github.io/~ybm/",
          "description": "Enter my lab."
       },
       {
          "name": "resume",
          "type": "exec",
-         "contents": "http://myanbin.github.io/cv.html",
+         "contents": "https://myanbin.github.io/resume.html",
          "description": "My resume for job hunter."
       }
    ]
