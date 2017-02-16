@@ -580,6 +580,9 @@
         .enqueue('******')
         .enqueue('cat README')
         .enqueue('help')
+        .enqueue('ls')
+        .enqueue('cal')
+        .enqueue('fortune')
         .begin();
     }
     );
