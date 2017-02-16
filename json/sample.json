@@ -5,8 +5,8 @@
       {
          "name": "README",
          "type": "text",
-         "contents": "My name is Yanbin Ma. I am a Software Engineer at Beijing. This is my website.\n\nYou can contact me at ma.yanbin@qq.com.\n\nIf you need help, type \"help\".",
-         "description": "Read me to know me."
+         "contents": "My name is Yanbin Ma. I am a Software Engineer on Web Developing. This is my website.\n\nYou can contact me at ma.yanbin@qq.com.\n\nIf you need help, type \"help\".",
+         "description": "Read me to comprehend me"
       },
       {
          "name": "images",
@@ -16,41 +16,35 @@
                "name": "itsme@2010.jpg",
                "type": "img",
                "contents": "/images/itsme@2010.jpg",
-               "caption": "Me in Shanxi University, 2010."
+               "caption": "Me in Shanxi University, 2010"
             }
          ],
-         "description": "Some photos you will like."
+         "description": "Some photos"
       },
       {
-         "name": "perl",
+         "name": "codes",
          "type": "dir",
          "contents": [
             {
                "name": "love-letter.pl",
                "type": "text",
                "contents": "#!/usr/bin/perl\n# love letter (a perl poem)\n# by myb@bupt.edu.cn\n\nlisten me, please;\nmy $dear;\n\npelase:\n`touch my heart`. read the, $message, in;\n\nsort my @feelings, and pop my @feeling;\n\nplease:\nopen your, heart;\njoin us, together.\n\nlet us tell world,\n    that we are in love until time;",
-               "description": "A love letter by myb@bupt.edu.cn"
+               "description": "A love poem write by Perl"
             }
          ],
-         "description": "Some photos you will like."
+         "description": "Code snippets"
       },
       {
          "name": "blog",
          "type": "exec",
          "contents": "https://myanbin.github.io/",
-         "description": "My blog host on GitHub."
-      },
-      {
-         "name": "lab",
-         "type": "exec",
-         "contents": "https://infp.github.io/~ybm/",
-         "description": "Enter my lab."
+         "description": "Blog host on GitHub"
       },
       {
          "name": "resume",
          "type": "exec",
          "contents": "https://myanbin.github.io/resume.html",
-         "description": "My resume for job hunter."
+         "description": "Curriculum Vitae"
       }
    ]
 }
