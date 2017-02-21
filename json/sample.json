@@ -17,6 +17,12 @@
                "type": "img",
                "contents": "/images/itsme@2010.jpg",
                "caption": "Me in Shanxi University, 2010"
+            },
+            {
+               "name": "itsme@2011.jpg",
+               "type": "img",
+               "contents": "/images/itsme@2010.jpg",
+               "caption": "Me in front of Library, 2011"
             }
          ],
          "description": "Some photos"
