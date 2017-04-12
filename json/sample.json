@@ -3,7 +3,7 @@
    "type": "dir",
    "contents": [
       {
-         "name": "README",
+         "name": "README.md",
          "type": "text",
          "contents": "My name is Yanbin Ma. I am a Software Engineer on Web Developing. This is my website.\n\nYou can contact me at ma.yanbin@qq.com.\n\nIf you need help, type \"help\".",
          "description": "Read me to comprehend me"
@@ -21,7 +21,7 @@
             {
                "name": "itsme@2011.jpg",
                "type": "img",
-               "contents": "/images/itsme@2010.jpg",
+               "contents": "/images/itsme@2011.jpg",
                "caption": "Me in front of Library, 2011"
             }
          ],
@@ -41,15 +41,15 @@
          "description": "Code snippets"
       },
       {
-         "name": "blog",
+         "name": "blog.html",
          "type": "exec",
          "contents": "https://myanbin.github.io/",
          "description": "Blog host on GitHub"
       },
       {
-         "name": "resume",
+         "name": "cv.html",
          "type": "exec",
-         "contents": "https://myanbin.github.io/resume.html",
+         "contents": "https://www.linkedin.com/in/myanbin/",
          "description": "Curriculum Vitae"
       }
    ]

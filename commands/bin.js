@@ -447,7 +447,7 @@ COMMANDS.echo = function(argv, cb) {
 
 COMMANDS.history = function(argv, cb) {
     this._terminal._history.reverse().forEach(function(command, index) {
-        if (index < 10)
+        if (this._terminal._history.length <= 10 && index < 10)
             this._terminal.write(' ');
         this._terminal.write(index + '  ' + command + '<br>');
     }
@@ -497,7 +497,7 @@ COMMANDS.todo = function(argv, cb) {
                 this._terminal.write('<span class="orange">' + parseInt(i + 1) + '. ' + data.todo[i] + '</span><br>');
             }
         } else {
-            this._terminal.write('todo: 0 item');
+            this._terminal.write('no item in database');
         }
         cb();
         return;
