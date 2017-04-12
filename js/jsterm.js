@@ -578,11 +578,10 @@
         term.enqueue('login')
         .enqueue('ybm')
         .enqueue('******')
-        .enqueue('cat README')
+        .enqueue('cat README.md')
         .enqueue('help')
-        .enqueue('ls')
         .enqueue('cal')
-        .enqueue('fortune')
+        .enqueue('ls -l')
         .begin();
     }
     );
