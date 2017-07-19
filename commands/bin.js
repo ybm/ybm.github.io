@@ -72,15 +72,37 @@ COMMANDS.ls = function(argv, cb) {
     writeEntry;
     
     writeEntry = function(e, str) {
-        this.writeLink(e, str);
         if (args.indexOf('l') > -1) {
-            if ('description' in e)
-                this.write(' - ' + e.description);
+            switch (e.type) {
+                case 'dir':
+                    this.write('dr-x');
+                    break;
+                case 'exec':
+                    this.write('-r-x');
+                    break;
+                case 'img':
+                    this.write('-r-x');
+                    break;
+                case 'text':
+                    this.write('-rwx');
+                    break;
+                default:
+                    break;
+            }
+            this.write(Array(4 - e.contents.length.toString().length + 2).join('&nbsp') + ' ');
+            this.write(e.contents.length);
+            this.write(Array(2).join('&nbsp') + ' ');
+            this.writeLink(e, str);
+            if ('description' in e) {
+                this.write(Array(maxLen - e.name.length + 2).join('&nbsp') + ' ');
+                this.write('# ' + e.description);
+            }
             this.write('<br>');
         } else {
+            this.writeLink(e, str);
             // Make all entries the same width like real ls. End with a normal
             // space so the line breaks only after entries.
-            this.write(Array(maxLen - e.name.length + 2).join('&nbsp') + ' ');
+            this.write(Array(maxLen - e.name.length + 4).join('&nbsp') + ' ');
         }
     }
     .bind(this._terminal);
@@ -93,7 +115,7 @@ COMMANDS.ls = function(argv, cb) {
             return Math.max(prev, cur.name.length);
         }
         , 0);
-        
+
         for (var i in entry.contents) {
             var e = entry.contents[i];
             if (args.indexOf('a') > -1 || e.name[0] !== '.')
@@ -105,71 +127,6 @@ COMMANDS.ls = function(argv, cb) {
     }
     cb();
 }
-
-
-
-
-
-/**
- * mkdir - create a new directory in the filesystem
- */
-COMMANDS.mkdir = function(argv, cb){
-
-    /*
-     * Recursively searches the filesystem until we reach location to create the new directory.
-     * @param fs is the current unmodified filesystem. 
-     * @param loc loc is the location where we want to create the new directory.
-     * @param new_obj is the directory we want to add to the filesystem
-     */
-    function makeDir(fs, loc, new_obj) { 
-        if(fs.constructor === Array) {
-            //loop through objects
-            for (var i=0; i<fs.length; i++) {
-                //  console.log(fs[i].name);
-                //console.log(fs[i].type);
-                handleStuff(fs[i], loc, new_obj);
-            }
-        } else {
-            //console.log('fs is not array!');
-            handleStuff(fs, loc, new_obj);
-        }
-    }
-
-    // Create the new directory (new_obj) in the filesystem (fs) in current working directory (current_loc)
-    function handleStuff(fs, current_loc, new_obj) {
-        if( (fs) && (fs.type == "dir") && (fs.name == current_loc[0])) {
-            fs["contents"].push(new_obj);
-        } else if (fs.type == "dir") {
-            makeDir(fs["contents"], current_loc, new_obj);
-        }
-
-    }
-    var dirName = this._terminal.parseArgs(argv).filenames,stdout;
-    // The user must specify the name of the directory they want to create
-    if (!dirName.length) {
-        this._terminal.write('usage: mkdir directory ...');
-        cb();
-    }
-    //get our current location
-    var loc = new String(/[^/]*$/.exec(this._terminal.getCWD())[0]);
-    loc = [loc];
-    //this is the current directory of where the user is in the directory tree
-
-    //create new object
-    var new_obj = {
-        "name": dirName[0],
-        "type": "dir",
-        "description": "No description",
-        "contents": []
-    };
-    //call the function
-    makeDir(this._terminal.fs, loc, new_obj);
-
-    this._terminal.loadFSFromString(this._terminal.fs, function() {                                    
-        cb();                                                                         
-    }.bind(this._terminal));
-}
-
 
 
 

@@ -1,56 +1,70 @@
 {
-   "name": "~",
-   "type": "dir",
-   "contents": [
-      {
-         "name": "README.md",
-         "type": "text",
-         "contents": "My name is Yanbin Ma. I am a Software Engineer on Web Developing. This is my personal website.\n\nYou can contact me at ma.yanbin@qq.com.\n\nIf you need help, type \"help\".",
-         "description": "Read Me to comprehend me"
-      },
-      {
-         "name": "images",
-         "type": "dir",
-         "contents": [
-            {
-               "name": "itsme@2010.jpg",
-               "type": "img",
-               "contents": "/images/itsme@2010.jpg",
-               "caption": "Me in Shanxi University, 2010"
-            },
-            {
-               "name": "itsme@2011.jpg",
-               "type": "img",
-               "contents": "/images/itsme@2011.jpg",
-               "caption": "Me in front of Library, 2011"
-            }
-         ],
-         "description": "Some photos about me"
-      },
-      {
-         "name": "codes",
-         "type": "dir",
-         "contents": [
-            {
-               "name": "love-letter.pl",
-               "type": "text",
-               "contents": "#!/usr/bin/perl\n# love letter (a perl poem)\n# by myb@bupt.edu.cn\n\nlisten me, please;\nmy $dear;\n\npelase:\n`touch my heart`. read the, $message, in;\n\nsort my @feelings, and pop my @feeling;\n\nplease:\nopen your, heart;\njoin us, together.\n\nlet us tell world,\n    that we are in love until time;",
-               "description": "A love poem write by Perl"
-            }
-         ],
-         "description": "Code snippets"
-      },
-      {
-         "name": "blog.html",
-         "type": "exec",
-         "contents": "https://myanbin.github.io/",
-         "description": "Blog host on GitHub"
-      },
-      {
-         "name": "cv.html",
-         "type": "exec",
-         "contents": "https://www.linkedin.com/in/myanbin/",
-         "description": "Curriculum Vitae"
-      }
-   ]
+  "name": "~",
+  "type": "dir",
+  "contents": [{
+      "name": "codes",
+      "type": "dir",
+      "contents": [{
+        "name": "love-letter.pl",
+        "type": "text",
+        "contents": "#!/usr/bin/perl\n# love letter (a perl poem)\n# by myb@bupt.edu.cn\n\nlisten me, please;\nmy $dear;\n\npelase:\n`touch my heart`. read the, $message, in;\n\nsort my @feelings, and pop my @feeling;\n\nplease:\nopen your, heart;\njoin us, together.\n\nlet us tell world,\n    that we are in love until time;",
+        "description": "A love poem write by Perl"
+      }],
+      "description": "Code snippets"
+    },
+    {
+      "name": "images",
+      "type": "dir",
+      "contents": [{
+          "name": "itsme@2010.jpg",
+          "type": "img",
+          "contents": "/images/itsme@2010.jpg",
+          "caption": "Me in Shanxi University, 2010"
+        },
+        {
+          "name": "itsme@2011.jpg",
+          "type": "img",
+          "contents": "/images/itsme@2011.jpg",
+          "caption": "Me in front of Library, 2011"
+        }
+      ],
+      "description": "Some photos about me"
+    },
+    {
+      "name": "links",
+      "type": "dir",
+      "contents": [{
+          "name": "bbs.byr.cn",
+          "type": "exec",
+          "contents": "https://bbs.byr.cn",
+          "description": "BBS for BYR"
+        },
+        {
+          "name": "vol.moe",
+          "type": "exec",
+          "contents": "http://vol.moe/",
+          "description": "Kindle library"
+        }
+      ],
+      "description": "Some photos about me"
+    },
+    {
+      "name": "blog.html",
+      "type": "exec",
+      "contents": "https://myanbin.github.io/",
+      "description": "Blog host on GitHub"
+    },
+    {
+      "name": "cv.html",
+      "type": "exec",
+      "contents": "https://www.linkedin.com/in/myanbin/",
+      "description": "Curriculum Vitae"
+    },
+    {
+      "name": "README.md",
+      "type": "text",
+      "contents": "My name is Yanbin Ma. I am a Software Engineer on Web Developing. This is my personal website.\n\nYou can contact me at ma.yanbin@qq.com.\n\nIf you need help, type \"help\".",
+      "description": "Read Me to comprehend me"
+    }
+  ]
 }
