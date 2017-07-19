@@ -579,9 +579,6 @@
         .enqueue('ybm')
         .enqueue('******')
         .enqueue('cat README.md')
-        .enqueue('help')
-        .enqueue('cal')
-        .enqueue('ls -l')
         .begin();
     }
     );

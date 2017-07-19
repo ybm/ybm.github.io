@@ -247,8 +247,8 @@ COMMANDS.help = function(argv, cb) {
 }
 
 
-// Copyright 2015 Yanbin MA (yianbin@gmail.com)
-// The following code is written by Yanbin MA
+// Copyright 2015 Yanbin Ma (yianbin@gmail.com)
+// The following code is written by Yanbin Ma
 // Enjoy it!
 COMMANDS.whoami = function(argv, cb) {
     this._terminal.write(this._terminal.config.username);
@@ -388,22 +388,24 @@ COMMANDS.cal = function(argv, cb) {
 }
 
 COMMANDS.echo = function(argv, cb) {
-    var string = this._terminal.parseArgs(argv).filenames.join(' '), 
-    args = this._terminal.parseArgs(argv).args;
-    if (args.length > 1 && args[0] == '>') {
-        var entry = {
-            'name': args[1].match(/[^/]+$/)[0],
-            'type': 'text',
-            'contents': string,
-            'description': 'No description'
-        };
-        this._terminal.writeFile(entry, args[1]);
-    } else {
-        this._terminal.write(string);
-    }
+    var string = this._terminal.parseArgs(argv).filenames.join(' ');
+    this._terminal.write(string);
     cb();
 }
 
+COMMANDS.cowsay = function(argv, cb) {
+    var string = this._terminal.parseArgs(argv).filenames.join(' ');
+    var length = string.length, indent = parseInt(length / 2);
+    this._terminal.write(' ' + Array(length + 2).join('_') + '<br>');
+    this._terminal.write('< ' + string + ' >' + '<br>');
+    this._terminal.write(' ' + Array(length + 2).join('-') + '<br>');
+    this._terminal.write(Array(indent).join(' ') + '\\   ^__^' + '<br>');
+    this._terminal.write(Array(indent).join(' ') + ' \\  (oo)\\_______' + '<br>');
+    this._terminal.write(Array(indent).join(' ') + '    (__)\\       )\\/\\' + '<br>');
+    this._terminal.write(Array(indent).join(' ') + '        ||----w |' + '<br>');
+    this._terminal.write(Array(indent).join(' ') + '        ||     ||' + '<br>');
+    cb();
+}
 
 COMMANDS.history = function(argv, cb) {
     this._terminal._history.reverse().forEach(function(command, index) {
