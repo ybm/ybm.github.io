@@ -5,8 +5,8 @@
       {
          "name": "README.md",
          "type": "text",
-         "contents": "My name is Yanbin Ma. I am a Software Engineer on Web Developing. This is my website.\n\nYou can contact me at ma.yanbin@qq.com.\n\nIf you need help, type \"help\".",
-         "description": "Read me to comprehend me"
+         "contents": "My name is Yanbin Ma. I am a Software Engineer on Web Developing. This is my personal website.\n\nYou can contact me at ma.yanbin@qq.com.\n\nIf you need help, type \"help\".",
+         "description": "Read Me to comprehend me"
       },
       {
          "name": "images",
@@ -25,7 +25,7 @@
                "caption": "Me in front of Library, 2011"
             }
          ],
-         "description": "Some photos"
+         "description": "Some photos about me"
       },
       {
          "name": "codes",

@@ -344,7 +344,10 @@ COMMANDS.fortune = function(argv, cb) {
 }
 
 COMMANDS.date = function(argv, cb) {
-    this._terminal.write(new Date().toUTCString());
+    this._terminal.write((new Date().toUTCString()).replace(/^([\w\W]*\d{4}[ ])(\d\d)([:][\w\W]*)/, function (match, p1, p2, p3) {
+        p2 = +p2 + 8;
+        return [p1, p2, p3].join('');
+    }));
     cb();
 }
 
@@ -488,111 +491,6 @@ COMMANDS.ascii = function(argv, cb) {
     cb();
 }
 
-COMMANDS.todo = function(argv, cb) {
-    switch (argv.length) {
-    case 0:
-        if (window.localStorage.hasOwnProperty('td')) {
-            var data = JSON.parse(window.localStorage.getItem('td'));
-            for (var i = 0; i < data.todo.length; i++) {
-                this._terminal.write('<span class="orange">' + parseInt(i + 1) + '. ' + data.todo[i] + '</span><br>');
-            }
-        } else {
-            this._terminal.write('no item in database');
-        }
-        cb();
-        return;
-    case 1:
-        if (argv[0] == 'reset') {
-            this._terminal.returnHandler = function () {
-                this.write('Do you want reset todo list (y/n): ');
-                this.scroll();
-                window.localStorage.removeItem('td');
-            }
-            .bind(this._terminal);
-        }
-    case 2:
-        if (argv[0] == 'done' && !isNaN(argv[1])) {
-            if (window.localStorage.hasOwnProperty('td')) {
-                var id = parseInt(argv[1]) - 1, data = JSON.parse(window.localStorage.getItem('td'));
-                if (id >= 0 && data.todo.length >= id) {
-                    var item = data.todo.splice(id, 1);
-                    data.done.push(item);
-                    window.localStorage.setItem('td', JSON.stringify(data));
-                }
-            }
-            cb ();
-            return;
-        } else if (argv[0] == 'delete' && !isNaN(argv[1])) {
-            // TODO
-            cb();
-            return;
-        } else if (argv[0] == 'reset') {
-            window.localStorage.removeItem('td');
-            cb();
-            return;
-        }
-    default:
-        if (argv.length >1 && argv[0] == 'add') {
-            if (!window.localStorage.hasOwnProperty('td')) {
-                window.localStorage.setItem('td', JSON.stringify({
-                    'todo': [],
-                    'done': []
-                }));
-            }
-            var data = JSON.parse(window.localStorage.getItem('td'));
-            data.todo.push(argv.slice(1).join(' ').trim());
-            window.localStorage.setItem('td', JSON.stringify(data));
-            cb();
-            return;
-        }
-        this._terminal.write('todo: invalid arguments');
-        cb();
-        return;
-    }
-}
-
-COMMANDS.google = function(argv, cb) {
-    var that = this;
-    var timestamp = new Date().getTime();
-    var q = this._terminal.parseArgs(argv).filenames.join(' ');
-    if (q == '') {
-        this._terminal.write('google: invalid arguments');
-        cb();
-        return;
-    }
-    this._terminal.write('  <span class="blue">___</span>                <span class="green">_</span> <br>');
-    this._terminal.write(' <span class="blue">/ __|</span><span class="red">___</span>  <span class="yellow">___</span>  <span class="blue">__</span> _<span class="green">| |<span><span class="red">___</span><br>');
-    this._terminal.write('<span class="blue">| (_</span> <span class="red">/ _ \\</span><span class="yellow">/ _ \\</span><span class="blue">/ _`</span> <span class="green">|</span>   <span class="red">-_)</span><br>');
-    this._terminal.write(' <span class="blue">\\___</span><span class="red">\\___/</span><span class="yellow">\\___/</span><span class="blue">\\__,</span> <span class="green">|_</span><span class="red">\\___|</span><br>');
-    this._terminal.write('               <span class="blue">|___/</span><br>');
-
-    url = 'http://jsonpwrapper.com/?urls%5B%5D=http%3A%2F%2Fcmd.to%2Fapi%2Fv1%2Fapps%2Fcmd%2Fsearch%2F';
-    $.ajax({
-        type: 'get',
-        url: url + encodeURI(encodeURI(q)),
-        dataType: 'jsonp'
-
-    }).done(function (data) {
-        var data = JSON.parse(data[0].body);
-        var goog = [];
-
-        goog = goog.concat(data.datas[0].responseData.results);
-        goog = goog.concat(data.datas[1].responseData.results);
-        // goog = goog.concat(data.datas[2].responseData.results);
-
-        for (var i = 0; i < goog.length; i++) {
-            var s = '<pre class="google">' + i + ': <a href="' + goog[i].url +'">' + goog[i].title +
-                    ' <i>(' + goog[i].visibleUrl + ')</i></a><br>' + goog[i].content + '</pre>';
-            that._terminal.write(s);
-        }
-    }).fail(function () {
-        that._terminal.writing('google: Network connect error');
-    }).always(function () {
-        cb();
-    });
-
-}
-
 COMMANDS.vim = function(argv, cb) {
     var filenames = this._terminal.parseArgs(argv).filenames;
 
@@ -658,4 +556,12 @@ COMMANDS.vim = function(argv, cb) {
         }
     });
     return;
+}
+
+COMMANDS.startrek = function(argv, cb) {
+    this._terminal.fullScreen();
+    var matrix = document.createElement('div');
+    matrix.classList.add('starfield');
+    document.getElementById('screen').appendChild(matrix);
+    $('.starfield').starfield();
 }
